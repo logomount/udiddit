@@ -66,7 +66,8 @@ CREATE TABLE comments (
 		ON DELETE CASCADE
 );
 CREATE INDEX ON comments(created_on);
-
+CREATE INDEX ON comments(top_level_comment_id);
+				     
 /* e.	Make sure that a given user can only vote once on a given post:
       i.	Hint: you can store the (up/down) value of the vote as the values 1 and -1 respectively.
       ii.	If the user who cast a vote gets deleted, then all their votes will remain, but will become dissociated from the user.
@@ -79,4 +80,3 @@ CREATE TABLE votes (
 	CONSTRAINT one_vote_per_user UNIQUE(post_id, user_id)
 );
 CREATE INDEX ON votes(post_id);
-CREATE INDEX ON votes(vote);
