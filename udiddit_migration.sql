@@ -22,7 +22,7 @@ INSERT INTO topics(name)
 
 /** Migrate posts **/
 INSERT INTO posts(user_id, topic_id, title, url, content)
-	SELECT u.id, t.id, SUBSTR(bp.title, 1, 100), bp.url, 				bp.text_content
+	SELECT u.id, t.id, SUBSTR(bp.title, 1, 100), bp.url, bp.text_content
   	FROM bad_posts AS bp
   	JOIN topics AS t
   	ON t.name = bp.topic
